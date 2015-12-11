@@ -4,13 +4,8 @@
  * Module dependencies.
  */
 
-<<<<<<< HEAD
 var app = require('../app');
-var debug = require('debug')('eyetracker_test:server');
-=======
-var app = require('../server');
 var debug = require('debug')('partyCop:server');
->>>>>>> 1aa75be1225fdf73cebddab7d4912e8c1484592e
 var http = require('http');
 
 /**

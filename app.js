@@ -44,6 +44,7 @@ var NA = 4
 eye.on('gazeUpdate', function (gazeData) {
 	var x = parseFloat(JSON.stringify(gazeData.avg.x));
 	var y = parseFloat(JSON.stringify(gazeData.avg.y));
+
 	if (quadrant != NA) {
 		if (x < 700 && y < 300) {
 			/* Top Lefthand corner */
@@ -70,11 +71,14 @@ eye.on('gazeUpdate', function (gazeData) {
 				turnRight();
 				quadrant = BR;
 			}
-		}
+		} else {
+      /* Do nothing -- probably noise from eye tracking */
+      ;
+    }
 	}
 
-	console.log('data x: ' + x);
-	console.log('data.y: ' + y);
+	console.log('Gaze x: ' + x);
+	console.log('Gaze y: ' + y);
 });
 
 eye.on('disconnected', function (err) {
@@ -101,17 +105,15 @@ eye.activate(function (err) {
 
 
 /* For iRobot connection */
-var host = 'ws://192.168.0.23:';
-var port = 2223;
 var options = {
-  host: '192.168.0.23',
-  port: 2222,
+  host: '192.168.0.23', // <- change this ip address 
+  port: 2222, // <- and the ip address as you fancy
   method: 'POST',
   path: '/'
 };
 
 //turnLeft();
-goStraight();
+//goStraight();
 
 function goStraight() {
   var req = http.request(options, function(res) {
@@ -205,7 +207,8 @@ function turnRight() {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'html');
+app.engine('.html', require('ejs').__express);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -251,4 +254,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
