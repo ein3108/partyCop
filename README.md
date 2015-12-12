@@ -35,7 +35,7 @@
   ./partyCopServer [Port #]
   ```
 
-1. Then you're set to go! Go to the `partyCop' folder and execute the following:
+1. Then you're set to go! Go to the 'partyCop' folder and execute the following:
   ```
   npm start
   ```

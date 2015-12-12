@@ -25,6 +25,7 @@ eye.activate({
 
 eye.on('connected', function () {
   console.log('Eyetribe Connected');
+  goStraight();
 });
 
 /* Quadrants Directions
@@ -45,40 +46,42 @@ eye.on('gazeUpdate', function (gazeData) {
 	var x = parseFloat(JSON.stringify(gazeData.avg.x));
 	var y = parseFloat(JSON.stringify(gazeData.avg.y));
 
+  /*
 	if (quadrant != NA) {
 		if (x < 700 && y < 300) {
-			/* Top Lefthand corner */
+			// Top Lefthand corner 
 			if (quadrant != TL) {
-				/* Only if it changed the direction */
+				// Only if it changed the direction 
 				goStraight();
 				quadrant = TL;
 			}
 		} else if (x >= 700 && y < 300) {
-			/* Top Righthand corner */
+			// Top Righthand corner 
 			if (quadrant != TR) {
 				goBack();
 				quadrant = TR;
 			}
 		} else if (x < 700 && y >= 300) {
-			/* Bottom Lefthand corner */
+			// Bottom Lefthand corner 
 			if (quadrant != BL) {
 				turnLeft();
 				quadrant = BL;
 			}
 		} else if (x >= 700 && y >= 300) {
-			/* Bottom Righthand corner */
+			// Bottom Righthand corner 
 			if (quadrant != BR) {
 				turnRight();
 				quadrant = BR;
 			}
 		} else {
-      /* Do nothing -- probably noise from eye tracking */
+      // Do nothing -- probably noise from eye tracking 
       ;
     }
 	}
 
 	console.log('Gaze x: ' + x);
 	console.log('Gaze y: ' + y);
+  */
 });
 
 eye.on('disconnected', function (err) {
@@ -86,7 +89,6 @@ eye.on('disconnected', function (err) {
 });
 
 eye.activate(function (err) {
-
   if (err) { 
     console.error('Connection failed.'); 
     return ;
