@@ -1,4 +1,5 @@
-*Akshay, please read this and follow the instructions to execute*
+*
+please read this and follow the instructions to execute*
 
 1. I'm assuming that you do have not `node.js` installed. If this is the case, please install it as well as its legacy code (to prevent the possible conflicts that could arise from the packages that I'm using) as follows:
   ```
